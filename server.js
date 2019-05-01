@@ -1,6 +1,7 @@
 'use strict';
 
 require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -34,7 +35,7 @@ app.get('/location', (request,response) => {
       });
   } catch(error){
     console.log('There was an error with location')
-    response.status(500).send('Status: ', error);
+    response.status(500).send('Status: , error on location');
   }
 });
 
@@ -54,8 +55,8 @@ app.get('/weather', (request, response) => {
 function Location(query, res) {
   this.search_query = query;
   this.formatted_query = res.results[0].formatted_address;
-  this.Latitude = res.results[0].geometry.location.lat;
-  this.Longitude = res.results[0].geometry.location.lng;
+  this.latitude = res.results[0].geometry.location.lat;
+  this.longitude = res.results[0].geometry.location.lng;
 }
 
 function getWeather() {
